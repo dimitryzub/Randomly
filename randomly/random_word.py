@@ -1,7 +1,7 @@
 import random
 from pathlib import Path
 
-WORDS_FILE = Path(__file__).parent.resolve() / 'words_from_all_themes.txt'
+WORDS_FILE = Path(__file__).parent.resolve() / 'random_words.txt'
 
 # TODO: at some point, make functions chain.
 class Words:
