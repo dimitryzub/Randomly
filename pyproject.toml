@@ -2,7 +2,7 @@
 name = "randomly"
 authors = [{name = "Dimitry Zub", email = "dimitryzub@gmail.com"}]
 readme = "README.md"
-license = "MIT"
+license = {license = "MIT"}
 version = "0.1.0"
 requires-python = ">=3.6"
 dynamic = ["version", "description"]
