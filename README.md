@@ -1,7 +1,3 @@
-
-Randomly is Python library to generate random things
-
-
 ## Installation
 Using pip:
 ```python
