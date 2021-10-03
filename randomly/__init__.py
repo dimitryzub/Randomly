@@ -1,4 +1,4 @@
-from randomly.random_words import Words
+from .random_words import Words
 
 __all__ = [
     'Words',
