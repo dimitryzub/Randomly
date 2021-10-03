@@ -20,9 +20,9 @@ Words().get_random_words_that_starts_with('A', words_to_return=3)  # ['abandoned
 
 ## Installation
 ```
-pip install randomit
+$ pip install randomit
 ```
 
 ```
-git clone https://github.com/dimitryzub/randomit.git
+$ git clone https://github.com/dimitryzub/randomit.git
 ```
