@@ -1,13 +1,16 @@
-<h2 align="center">Randomly</h2>
-<h6 align="center">Randomly is Python library to generate random things</h6>
 
-<p align="center">
-    <img src="https://images.pexels.com/photos/3844790/pexels-photo-3844790.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Abstract image from @didsss from Pexels" width="600"/>
-</p>
+Randomly is Python library to generate random things
+
 
 ## Installation
+Using pip:
+```python
+pip install randomit
 ```
-git clone https://github.com/dimitryzub/Randomly.git
+
+Using Git clone:
+```
+git clone https://github.com/dimitryzub/randomit.git
 ```
 
 
