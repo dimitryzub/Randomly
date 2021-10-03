@@ -1,4 +1,4 @@
-from randomly import Words
+from randomit import Words
 
 def test_get_random_word_func():
     random_word = Words().get_random_word()
