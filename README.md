@@ -5,12 +5,13 @@
     <img src="https://images.pexels.com/photos/3844790/pexels-photo-3844790.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Abstract image from @didsss from Pexels" width="600"/>
 </p>
 
-<h3>Installation</h3>
-```lang-none
+## Installation
+```
 git clone https://github.com/dimitryzub/Randomly.git
 ```
 
-<h3>Usage</h3>
+
+## Usage
 ```python
 from randomly import Words
 
