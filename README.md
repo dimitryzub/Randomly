@@ -23,10 +23,10 @@ Words().get_random_word()
 
 # get random words
 Words().get_random_words()                   # returns a list of 17k words
-Words().get_random_words(words_to_return=5)  # returns a list of 5 words
+Words().get_random_words(words_to_return=3)  # ['axis', 'overabundant', 'superuser']
 
 # get random words that starts with..
 Words().get_random_words_that_starts_with('A')                      # returns all words that starts with letter "A" 
-Words().get_random_words_that_starts_with('A', words_to_return=5)   # returns 5 words that starts with letter "A"
+Words().get_random_words_that_starts_with('A', words_to_return=3)   # ['abandoned', 'able', 'absolute']
 ```
 
