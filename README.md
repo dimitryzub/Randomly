@@ -1,15 +1,3 @@
-## Installation
-Using pip:
-```python
-pip install randomit
-```
-
-Using Git clone:
-```
-git clone https://github.com/dimitryzub/randomit.git
-```
-
-
 ## Usage
 
 ```python
@@ -30,3 +18,11 @@ Words().get_random_words_that_starts_with('A')  # returns all words that starts 
 Words().get_random_words_that_starts_with('A', words_to_return=3)  # ['abandoned', 'able', 'absolute']
 ```
 
+## Installation
+```
+pip install randomit
+```
+
+```
+git clone https://github.com/dimitryzub/randomit.git
+```
