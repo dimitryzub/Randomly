@@ -6,6 +6,16 @@ description = "Python library to generate random things."
 authors = ["Dimitry Zub <dimitryzub@gmail.com>"]
 license = "MIT"
 readme = "README.md"
+classifiers = [
+    "Intended Audience :: Developers",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+]
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
