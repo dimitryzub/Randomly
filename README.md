@@ -5,7 +5,6 @@ ___
 Currently, `randomit` can get you [random word(s)](#get-random-words), [name(s) and surname(s)](#get-random-names-and-surnames)
 and it can [load your words files](#load-and-pass-your-files) to randomize them.
 
-___
 ## Usage
 *Words will always be different on each execution no matter what arguments being passed.*
 
