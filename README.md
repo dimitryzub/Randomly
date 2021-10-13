@@ -1,9 +1,13 @@
-Currently, it can get you [random word(s)](#get-random-words), [name(s) and surname(s)](#get-random-names-and-surnames)
+# Randomit
+A Python library to generate random things.
+
+___
+Currently, `randomit` can get you [random word(s)](#get-random-words), [name(s) and surname(s)](#get-random-names-and-surnames)
 and it can [load your words files](#load-and-pass-your-files) to randomize them.
 
-Words will always be different on each execution no matter what arguments being passed.
-
+___
 ## Usage
+*Words will always be different on each execution no matter what arguments being passed.*
 
 #### Get random words:
 
@@ -97,7 +101,7 @@ class MyRandomWords(WordRandomizer):
 # call it 
 MyRandomWords().get_my_random_words(capitalize=True, words_to_return=3, letter_starts_with='S')
 ```
-
+___
 ## Installation
 
 ```
