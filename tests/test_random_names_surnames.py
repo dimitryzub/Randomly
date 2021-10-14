@@ -70,7 +70,8 @@ def test_random_surname():
     assert type(random_surname) != dict
     assert type(random_surname) != list
 
-    assert isinstance(random_surname_capitalized, str) and random_surname_capitalized.istitle()
+    assert isinstance(random_surname_capitalized, str)
+    assert random_surname_capitalized.istitle()
     assert type(random_surname_capitalized) != int
     assert type(random_surname_capitalized) != dict
     assert type(random_surname_capitalized) != list
