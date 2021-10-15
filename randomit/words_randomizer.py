@@ -1,224 +1,128 @@
 import random
-from randomit.words_loader import WordsLoader
+from pathlib import Path
+
+RANDOM_WORDS_FILE = Path(__file__).parent / 'words_storage' / 'random_words.txt'
+NAMES_FILE = Path(__file__).parent.resolve() / 'words_storage' / 'names_list.txt'
+SURNAMES_FILE = Path(__file__).parent.resolve() / 'words_storage' / 'surnames_list.txt'
+COUNTRIES_FILE = Path(__file__).parent.resolve() / 'words_storage' / 'countries_list.txt'
+CITIES_FILE = Path(__file__).parent.resolve() / 'words_storage' / 'cities_list.txt'
+ADDRESS_LIST = Path(__file__).parent.resolve() / 'words_storage' / 'addresses_list.txt'
 
 
-class WordRandomizer:
-    '''
-    if you want to use your own words text file, you need to:
-    1. Change WordsLoader().load_name_words() -> WordsLoader().YOUR_LOADED_WORDS() from words_loader.py
-    2.
+class Words:
 
-    '''
+    def __init__(self, theme: str = 'random' or 'names' or 'surnames' or 'cities' or 'countries' or 'address'):
+        self.theme = theme.lower().strip()
 
-    def randomizer(self, letter_starts_with: str = '', words_to_return: int = 0, capitalize: bool = False):
-        your_words = WordsLoader().load_name_words()
+    def available_themes(self) -> list[str]:
+        return ['random', 'names', 'surnames', 'cities', 'countries', 'address']
 
-        your_names_list = []
+    def load_words(self) -> list[str]:
+
+        if 'random' in self.theme:
+            with open(RANDOM_WORDS_FILE, 'r', encoding='utf-8') as all_words:
+                return [word.replace('\n', '') for word in all_words]
+
+        elif 'random words' in self.theme:
+            with open(NAMES_FILE, 'r', encoding='utf-8') as all_words:
+                return [word.replace('\n', '') for word in all_words]
+
+        elif 'names' in self.theme:
+            with open(NAMES_FILE, 'r', encoding='utf-8') as all_words:
+                return [word.replace('\n', '') for word in all_words]
+
+        elif 'surnames' in self.theme:
+            with open(SURNAMES_FILE, 'r', encoding='utf-8') as all_words:
+                return [word.replace('\n', '') for word in all_words]
+
+        elif 'cities' in self.theme:
+            with open(CITIES_FILE, 'r', encoding='utf-8') as all_words:
+                return [word.replace('\n', '') for word in all_words]
+
+        elif 'countries' in self.theme:
+            with open(COUNTRIES_FILE, 'r', encoding='utf-8') as all_words:
+                return [word.replace('\n', '') for word in all_words]
+
+        elif 'address' in self.theme:
+            with open(ADDRESS_LIST, 'r', encoding='utf-8') as all_words:
+                return [word.replace('\n', '') for word in all_words]
+
+        elif self.theme == '':
+            raise ValueError(
+                "Apparently, no theme is specified. Call available_themes() function to see available themes.")
+
+        else:
+            raise ValueError(
+                "No such build-in theme. Hover over a Words() object to see available themes. Or call available_themes() function.")
+
+    def randomizer(self,
+                   letter_starts_with: str = '',
+                   words_to_return: int = 0,
+                   capitalize: bool = False,
+                   return_one_word: bool = False,
+                   ) -> list[str] or str:
+
+        words = Words(self.theme).load_words()
+
+        words_list = []
+
+        if return_one_word and capitalize:
+            for word in words:
+                words_list.append(word.title())
+            return ''.join([words_list[random.randrange(0, len(words_list))] for _ in range(1)])
 
         if capitalize and words_to_return and letter_starts_with:
-            for your_word in your_words:
-                if your_word.startswith(letter_starts_with.lower()):
-                    your_names_list.append(your_word.capitalize())
+            for word in words:
+                if word.startswith(letter_starts_with.lower()):
+                    words_list.append(word.title())
 
-            return [your_names_list[random.randrange(0, len(your_names_list))] for _ in range(words_to_return)]
-
-        if capitalize and words_to_return:
-            for your_word in your_words:
-                your_names_list.append(your_word.capitalize())
-
-            return [your_names_list[random.randrange(0, len(your_names_list))] for _ in range(words_to_return)]
-
-        if capitalize and letter_starts_with:
-            for your_word in your_words:
-                if your_word.startswith(letter_starts_with.lower()):
-                    your_names_list.append(your_word.capitalize())
-
-            return your_names_list
-
-        if words_to_return and letter_starts_with:
-            for your_word in your_words:
-                if your_word.startswith(letter_starts_with.lower()):
-                    your_names_list.append(your_word)
-
-            return [your_names_list[random.randrange(0, len(your_names_list))] for _ in range(words_to_return)]
-
-        if capitalize:
-            for your_word in your_words:
-                your_names_list.append(your_word.capitalize())
-
-            return your_names_list
-
-        elif words_to_return:
-            for your_word in your_words:
-                your_names_list.append(your_word)
-
-            return [your_names_list[random.randrange(0, len(your_names_list))] for _ in range(words_to_return)]
-
-        elif letter_starts_with:
-            for your_word in your_words:
-                if your_word.startswith(letter_starts_with.lower()):
-                    your_names_list.append(your_word)
-
-            return your_names_list
-
-        else:
-            for your_word in your_words:
-                your_names_list.append(your_word)
-
-            return your_names_list
-
-    def randomize_to_get_one_word(self):
-        return random.choice(WordsLoader().load_random_words())
-
-    def randomize_to_get_multiple_words(self, words_to_return: int = 0):
-        all_words = WordsLoader().load_random_words()
-
-        if words_to_return:
-            return [all_words[random.randrange(0, len(all_words))] for _ in range(words_to_return)]
-        else:
-            return all_words
-
-    def randomize_words_that_start_with(self, letter: str, words_to_return: int = 0):
-        all_words = WordsLoader().load_random_words()
-
-        found_words = []
-
-        if letter != '':
-            for word in all_words:
-                if word.startswith(str(letter.lower())):
-                    found_words.append(word)
-
-            if words_to_return:
-                return [found_words[random.randrange(0, len(found_words))] for _ in range(words_to_return)]
-            else:
-                return found_words
-
-    def randomize_name(self, capitalize: bool = False):
-        all_names = WordsLoader().load_name_words()
-
-        if capitalize:
-            return random.choice([name.capitalize() for name in all_names])
-        else:
-            return random.choice(all_names)
-
-    def randomize_names(self, letter_starts_with: str = '', words_to_return: int = 0, capitalize: bool = False):
-        all_names = WordsLoader().load_name_words()
-
-        names_list = []
-
-        if capitalize and words_to_return and letter_starts_with:
-            for name in all_names:
-                if name.startswith(letter_starts_with.lower()):
-                    names_list.append(name.capitalize())
-
-            return [names_list[random.randrange(0, len(names_list))] for _ in range(words_to_return)]
+            return [words_list[random.randrange(0, len(words_list))] for _ in range(words_to_return)]
 
         if capitalize and words_to_return:
-            for name in all_names:
-                names_list.append(name.capitalize())
+            for word in words:
+                words_list.append(word.title())
 
-            return [names_list[random.randrange(0, len(names_list))] for _ in range(words_to_return)]
-
-        if capitalize and letter_starts_with:
-            for name in all_names:
-                if name.startswith(letter_starts_with.lower()):
-                    names_list.append(name.capitalize())
-
-            return names_list
-
-        if words_to_return and letter_starts_with:
-            for name in all_names:
-                if name.startswith(letter_starts_with.lower()):
-                    names_list.append(name)
-
-            return [names_list[random.randrange(0, len(names_list))] for _ in range(words_to_return)]
-
-        if capitalize:
-            for name in all_names:
-                names_list.append(name.capitalize())
-
-            return names_list
-
-        elif words_to_return:
-            for name in all_names:
-                names_list.append(name)
-
-            return [names_list[random.randrange(0, len(names_list))] for _ in range(words_to_return)]
-
-        elif letter_starts_with:
-            for name in all_names:
-                if name.startswith(letter_starts_with.lower()):
-                    names_list.append(name)
-
-            return names_list
-
-        else:
-            for name in all_names:
-                names_list.append(name)
-
-            return names_list
-
-    def randomize_surname(self, capitalize: bool = False):
-        all_surnames = WordsLoader().load_surname_words()
-
-        if capitalize:
-            return random.choice([name.capitalize() for name in all_surnames])
-        else:
-            return random.choice(all_surnames)
-
-    def randomize_surnames(self, letter_starts_with: str = '', words_to_return: int = 0, capitalize: bool = False):
-        all_surnames = WordsLoader().load_surname_words()
-
-        names_list = []
-
-        if capitalize and words_to_return and letter_starts_with:
-            for name in all_surnames:
-                if name.startswith(letter_starts_with.lower()):
-                    names_list.append(name.capitalize())
-
-            return [names_list[random.randrange(0, len(names_list))] for _ in range(words_to_return)]
-
-        if capitalize and words_to_return:
-            for name in all_surnames:
-                names_list.append(name.capitalize())
-
-            return [names_list[random.randrange(0, len(names_list))] for _ in range(words_to_return)]
+            return [words_list[random.randrange(0, len(words_list))] for _ in range(words_to_return)]
 
         if capitalize and letter_starts_with:
-            for name in all_surnames:
-                if name.startswith(letter_starts_with.lower()):
-                    names_list.append(name.capitalize())
+            for word in words:
+                if word.startswith(letter_starts_with.lower()):
+                    words_list.append(word.title())
 
-            return names_list
+            return words_list
 
         if words_to_return and letter_starts_with:
-            for name in all_surnames:
-                if name.startswith(letter_starts_with.lower()):
-                    names_list.append(name)
+            for word in words:
+                if word.startswith(letter_starts_with.lower()):
+                    words_list.append(word)
 
-            return [names_list[random.randrange(0, len(names_list))] for _ in range(words_to_return)]
+            return [words_list[random.randrange(0, len(words_list))] for _ in range(words_to_return)]
 
         if capitalize:
-            for name in all_surnames:
-                names_list.append(name.capitalize())
+            for word in words:
+                words_list.append(word.title())
 
-            return names_list
+            return words_list
 
         elif words_to_return:
-            for name in all_surnames:
-                names_list.append(name)
+            for word in words:
+                words_list.append(word)
 
-            return [names_list[random.randrange(0, len(names_list))] for _ in range(words_to_return)]
+            return [words_list[random.randrange(0, len(words_list))] for _ in range(words_to_return)]
 
         elif letter_starts_with:
-            for name in all_surnames:
-                if name.startswith(letter_starts_with.lower()):
-                    names_list.append(name)
+            for word in words:
+                if word.startswith(letter_starts_with.lower()):
+                    words_list.append(word)
 
-            return names_list
+            return words_list
+
+        elif return_one_word:
+            return random.choice(words)
 
         else:
-            for name in all_surnames:
-                names_list.append(name)
+            for word in words:
+                words_list.append(word)
 
-            return names_list
+            return words_list
+
