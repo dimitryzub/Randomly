@@ -1,114 +1,138 @@
-from randomit.words_randomizer import WordRandomizer
+import pytest
+from randomit.words_randomizer import Words
+
+
+def test_available_themes():
+    words_theme = Words().available_themes()
+
+    assert isinstance(words_theme, list)
+    assert len(words_theme) != 0
+
+    for theme in words_theme:
+        assert isinstance(theme, str)
+
+
+def test_load_words():
+    assert isinstance(Words('random words').randomizer(), list)
+    for rand_word in Words('random words').randomizer():
+        assert isinstance(rand_word, str)
+
+    assert len(Words('random words').randomizer()) != 0
+
+    assert isinstance(Words('names').randomizer(), list)
+    for name_word in Words('names').randomizer():
+        assert isinstance(name_word, str)
+
+    assert len(Words('names').randomizer()) != 0
+
+    assert isinstance(Words('surnames').randomizer(), list)
+    for surname_word in Words('surnames').randomizer():
+        assert isinstance(surname_word, str)
+
+    assert len(Words('surnames').randomizer()) != 0
+
+    assert isinstance(Words('cities').randomizer(), list)
+    for city_word in Words('cities').randomizer():
+        assert isinstance(city_word, str)
+
+    assert len(Words('cities').randomizer()) != 0
+
+    assert isinstance(Words('countries').randomizer(), list)
+    for country_word in Words('countries').randomizer():
+        assert isinstance(country_word, str)
+
+    assert isinstance(Words('address').randomizer(), list)
+    for address_word in Words('address').randomizer():
+        assert isinstance(address_word, str)
+
+    assert len(Words('countries').randomizer()) != 0
+
+    # if theme field is empty -> raise an error
+    with pytest.raises(ValueError) as no_theme_error:
+        Words('').load_words()
+    assert "Apparently, no theme is specified. Call available_themes() function to see available themes." in str(
+        no_theme_error.value)
+
+    # if different theme -> raise an error
+    with pytest.raises(ValueError) as value_error:
+        Words('lol').load_words()
+    assert "No such build-in theme. Hover over a Words() object to see available themes. Or call available_themes() function." in str(
+        value_error.value)
 
 
 def test_randomize_to_get_one_word():
-    random_word = WordRandomizer().randomize_to_get_one_word()
-
-    assert isinstance(random_word, str)
-    assert type(random_word) != dict or list or int
-    assert random_word is not None
+    # when Words() argument is empty -> defaults to random_words.txt
+    assert isinstance(Words().randomizer(return_one_word=True), str)
 
 
 def test_randomize_to_get_multiple_words():
-    random_words = WordRandomizer().randomize_to_get_multiple_words()
-    random_words_with_param = WordRandomizer().randomize_to_get_multiple_words(words_to_return=3)
-
-    assert isinstance(random_words, list)
-    assert isinstance(random_words[0], str)
-    assert type(random_words[0]) != int
-
-    assert type(random_words) != dict or int
-    assert len(random_words) != 0
-
-    assert isinstance(random_words_with_param, list)
-    assert isinstance(random_words_with_param[0], str)
-    assert type(random_words_with_param[0]) != int
-
-    assert type(random_words_with_param) != int or dict
-    assert len(random_words_with_param) == 3
-    assert len(random_words_with_param) != 0
-
-
-def test_randomize_words_that_start_with():
-    random_words_that_starts_with = WordRandomizer().randomize_words_that_start_with('ATM')
-    random_words_that_starts_with_param = WordRandomizer().randomize_words_that_start_with('A', words_to_return=5)
-
-    assert random_words_that_starts_with[0].startswith('atm')
-    assert isinstance(random_words_that_starts_with, list)
-    assert isinstance(random_words_that_starts_with[0], str)
-    assert type(random_words_that_starts_with[0]) != int
-    assert type(random_words_that_starts_with) != int or dict
-
-    assert isinstance(random_words_that_starts_with_param, list)
-    assert isinstance(random_words_that_starts_with_param[0], str)
-    assert type(random_words_that_starts_with_param[0]) != int
-    assert type(random_words_that_starts_with_param) != int or dict
-
-    assert random_words_that_starts_with_param[0].startswith('a')
-    assert len(random_words_that_starts_with_param) == 5
-    assert len(random_words_that_starts_with_param) != 0
-
-
-def test_randomize_name():
-    random_name = WordRandomizer().randomize_name()
-    random_name_capitalized = WordRandomizer().randomize_name(capitalize=True)
-
-    assert isinstance(random_name, str)
-    assert type(random_name) != int or list or dict
-
-    assert isinstance(random_name_capitalized, str)
-    assert type(random_name_capitalized) != int or list or dict
-    assert random_name_capitalized.istitle()
-
-
-def test_randomize_names():
     # Capital letters in variable names used to shorten
     # "words to return/capitalize/letter_starts_with" function arguments
-    random_names = WordRandomizer().randomize_names()
-    random_names_C = WordRandomizer().randomize_names(capitalize=True)
-    random_names_W = WordRandomizer().randomize_names(words_to_return=7)
-    random_names_L = WordRandomizer().randomize_names(letter_starts_with='H')
 
-    random_names_WC = WordRandomizer().randomize_names(words_to_return=5, capitalize=True)
-    random_names_WL = WordRandomizer().randomize_names(words_to_return=8, letter_starts_with='T')
-    random_names_CL = WordRandomizer().randomize_names(capitalize=True, letter_starts_with='Y')
-    random_names_WCL = WordRandomizer().randomize_names(words_to_return=5, capitalize=True, letter_starts_with='V')
+    random_words = Words(theme='random words').randomizer()
+    random_names_C = Words('names').randomizer(capitalize=True)
+    random_words_W = Words(theme='countries').randomizer(words_to_return=3)
+    random_name_one_word = Words(theme='names').randomizer(return_one_word=True)
+    random_words_L = Words(theme='random words').randomizer(letter_starts_with='ATM')
+    random_words_LW = Words(theme='cities').randomizer(letter_starts_with='A', words_to_return=5)
+    random_names_WC = Words('surnames').randomizer(words_to_return=5, capitalize=True)
+    random_names_CL = Words('names').randomizer(capitalize=True, letter_starts_with='Y')
+    random_name_capitalized_one_word = Words(theme='surnames').randomizer(capitalize=True, return_one_word=True)
+    random_names_WCL = Words('names').randomizer(words_to_return=5, capitalize=True, letter_starts_with='V')
 
-    # TODO: move the duplicate code into a separate function
-    assert isinstance(random_names, list)
-    assert isinstance(random_names[0], str)
-    assert type(random_names) != int or dict
+    assert isinstance(random_words, list)
+    for word in random_words:
+        assert isinstance(word, str)
+
+    assert len(random_words) != 0
 
     assert isinstance(random_names_C, list)
-    assert isinstance(random_names_C[0], str)
-    assert type(random_names_C) != int or dict
-    assert random_names_C[0].istitle()
+    for word_C in random_names_C:
+        assert isinstance(word_C, str)
+        assert word_C.istitle()
 
-    assert isinstance(random_names_W, list)
-    assert isinstance(random_names_W[0], str)
-    assert type(random_names_W) != int or dict
-    assert len(random_names_W) == 7
+    assert isinstance(random_words_W, list)
+    for word_W in random_words_W:
+        assert isinstance(word_W, str)
 
-    assert isinstance(random_names_L, list)
-    assert isinstance(random_names_L[0], str)
-    assert type(random_names_L) != int or dict
-    assert random_names_L[0].startswith('h')
+    assert len(random_words_W) == 3
+    assert len(random_words_W) != 0
+
+    assert isinstance(random_name_one_word, str)
+
+    assert isinstance(random_words_L, list)
+    for word_L in random_words_L:
+        assert isinstance(word_L, str)
+        assert word_L.startswith('atm')
+
+    assert isinstance(random_words_LW, list)
+    for word_LW in random_words_LW:
+        assert isinstance(word_LW, str)
+        assert word_LW.startswith('a')
+
+    assert len(random_words_LW) == 5
+    assert len(random_words_LW) != 0
 
     assert isinstance(random_names_WC, list)
-    assert isinstance(random_names_WC[0], str)
-    assert type(random_names_WC) != int or dict
-    assert len(random_names_WC) == 5 and random_names_WC[0].istitle()
+    for word_WC in random_names_WC:
+        assert isinstance(word_WC, str)
+        assert word_WC.istitle()
+
+    assert len(random_names_WC) == 5
 
     assert isinstance(random_names_CL, list)
-    assert isinstance(random_names_CL[0], str)
-    assert type(random_names_CL) != int or dict
-    assert random_names_CL[0].istitle() and random_names_CL[0].startswith('Y')
+    for word_CL in random_names_CL:
+        assert isinstance(word_CL, str)
+        assert word_CL.istitle()
+        assert word_CL.startswith('Y')
 
-    assert isinstance(random_names_WL, list)
-    assert isinstance(random_names_WL[0], str)
-    assert type(random_names_WL) != int or dict
+    assert isinstance(random_name_capitalized_one_word, str)
+    assert random_name_capitalized_one_word.istitle()
 
     assert isinstance(random_names_WCL, list)
-    assert isinstance(random_names_WCL[0], str)
-    assert type(random_names_WCL) != int or dict
-    assert len(random_names_WCL) == 5 and random_names_WCL[0].startswith('V') and random_names_WCL[0].istitle()
+    for word_WCL in random_names_WCL:
+        assert isinstance(word_WCL, str)
+        assert word_WCL.istitle()
+        assert word_WCL.startswith('V')
+
+    assert len(random_names_WCL) == 5
