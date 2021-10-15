@@ -3,8 +3,8 @@
 A Python library to generate random things.
 
 ___
-Currently, `randomit` can generate a [random word(s)](#randomize-words) based on a given [theme](#look-for-available-themes), 
-as well as [load your words files](#load-and-pass-your-files) to randomize them. To see what's coming, see [open projects](https://github.com/dimitryzub/randomit/projects).
+Currently, `randomit` can generate a [random word(s)](#randomize-words) based on a given [theme](#look-for-available-built-in-themes), 
+as well as [load your words files](#load-and-pass-your-files-with-words) to randomize them. To see what's coming, see [open projects](https://github.com/dimitryzub/randomit/projects).
 
 ## Usage
 
