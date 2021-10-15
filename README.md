@@ -55,7 +55,7 @@ YOUR_FILE = Path(__file__).parent.resolve() / 'words_storage' / 'YOUR_LIST.txt'
 def __init__(self, theme: str = 'YOUR THEME NAME' or 'ANOTHER THEME NAME'):
         self.theme = theme.lower().strip()
 
-# pass file to load_words() function and add and elif statement
+# pass file to load_words() function and add elif statement
 def load_words(self) -> list[str]:
     if 'YOUR THEME NAME' in self.theme:
         with open(YOUR_FILE, 'r', encoding='utf-8') as YOUR_WORDS:
