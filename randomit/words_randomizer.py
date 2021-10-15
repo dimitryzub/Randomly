@@ -11,11 +11,11 @@ ADDRESS_LIST = Path(__file__).parent.resolve() / 'words_storage' / 'addresses_li
 
 class Words:
 
-    def __init__(self, theme: str = 'random' or 'names' or 'surnames' or 'cities' or 'countries' or 'address'):
+    def __init__(self, theme: str = 'random words' or 'names' or 'surnames' or 'cities' or 'countries' or 'address'):
         self.theme = theme.lower().strip()
 
     def available_themes(self) -> list[str]:
-        return ['random', 'names', 'surnames', 'cities', 'countries', 'address']
+        return ['random words', 'names', 'surnames', 'cities', 'countries', 'address']
 
     def load_words(self) -> list[str]:
 
@@ -126,3 +126,4 @@ class Words:
 
             return words_list
 
+print(Words().available_themes())
