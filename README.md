@@ -39,7 +39,7 @@ Words().available_themes()
 ### Specify theme you want to get words from
 
 ```python
-Words('cities').randomizer() # or other theme from available_themes()
+Words('cities').randomizer() # pass available arguments + other theme from available_themes()
 ```
 
 ### Load and pass your file(s) with words
