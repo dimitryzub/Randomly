@@ -125,5 +125,3 @@ class Words:
                 words_list.append(word)
 
             return words_list
-
-print(Words().available_themes())
