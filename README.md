@@ -4,7 +4,7 @@ A Python library to generate random things.
 
 ___
 Currently, `randomit` can generate a [random word(s)](https://github.com/dimitryzub/randomit#randomize-words) based on a given [theme](https://github.com/dimitryzub/randomit#look-for-available-built-in-themes), 
-as well as [load your words files](https://github.com/dimitryzub/randomit#load-and-pass-your-files-with-words) to randomize them. 
+as well as [load your words files](https://github.com/dimitryzub/randomit#load-and-pass-your-files) to randomize them. 
 
 To see what's coming next, see [open projects](https://github.com/dimitryzub/randomit/projects).
 
@@ -43,10 +43,10 @@ Words().available_themes()
 ### Specify theme you want to get words from
 
 ```python
-Words(theme='cities').randomizer() # pass available arguments + other theme from available_themes()
+Words(theme='cities').randomizer() # pass available arguments
 ```
 
-### Load and pass your file(s) with words
+### Load and pass your file(s)
 _Make sure all words are **lowercase**, and start on a **new line** (`\n`), otherwise it won't work._
 
 ```python
@@ -75,3 +75,7 @@ If you have any suggestions or ideas what will be good to add, get involved in [
 ## 🔬 Issues
 
 For issues, visit [issues page](https://github.com/dimitryzub/randomit/issues) 🙃
+
+Note for [replit.com](https://replit.com/) users. If you’re using `randomit` on replit, it will throw an error for no obvious for me reason. If you know how to fix it, please, let me know. 
+
+Installing package locally via `pip` doesn’t produce such error as it should (_tested in Pycharm_).
