@@ -1,5 +1,9 @@
 import pytest
+from pathlib import Path
 from randomit.words_randomizer import Words
+
+# test file for passing custom file to Words(file=FILE) object
+TEST_FILE = Path(__file__).parent.parent.resolve() / "randomit" / "words_storage" / "cities_list.txt"
 
 
 def test_available_themes():
@@ -13,49 +17,55 @@ def test_available_themes():
 
 
 def test_load_words():
-    assert isinstance(Words('random words').randomizer(), list)
-    for rand_word in Words('random words').randomizer():
+    # when passing own file:
+    assert isinstance(Words(file=TEST_FILE).randomizer(), list)
+    for custom_word in Words(file=TEST_FILE).randomizer():
+        assert isinstance(custom_word, str)
+
+    # when passing built-in themes:
+    assert isinstance(Words(theme='random words').randomizer(), list)
+    for rand_word in Words(theme='random words').randomizer():
         assert isinstance(rand_word, str)
 
-    assert len(Words('random words').randomizer()) != 0
+    assert len(Words(theme='random words').randomizer()) != 0
 
-    assert isinstance(Words('names').randomizer(), list)
-    for name_word in Words('names').randomizer():
+    assert isinstance(Words(theme='names').randomizer(), list)
+    for name_word in Words(theme='names').randomizer():
         assert isinstance(name_word, str)
 
-    assert len(Words('names').randomizer()) != 0
+    assert len(Words(theme='names').randomizer()) != 0
 
-    assert isinstance(Words('surnames').randomizer(), list)
-    for surname_word in Words('surnames').randomizer():
+    assert isinstance(Words(theme='surnames').randomizer(), list)
+    for surname_word in Words(theme='surnames').randomizer():
         assert isinstance(surname_word, str)
 
-    assert len(Words('surnames').randomizer()) != 0
+    assert len(Words(theme='surnames').randomizer()) != 0
 
-    assert isinstance(Words('cities').randomizer(), list)
-    for city_word in Words('cities').randomizer():
+    assert isinstance(Words(theme='cities').randomizer(), list)
+    for city_word in Words(theme='cities').randomizer():
         assert isinstance(city_word, str)
 
-    assert len(Words('cities').randomizer()) != 0
+    assert len(Words(theme='cities').randomizer()) != 0
 
-    assert isinstance(Words('countries').randomizer(), list)
-    for country_word in Words('countries').randomizer():
+    assert isinstance(Words(theme='countries').randomizer(), list)
+    for country_word in Words(theme='countries').randomizer():
         assert isinstance(country_word, str)
 
-    assert isinstance(Words('address').randomizer(), list)
-    for address_word in Words('address').randomizer():
+    assert isinstance(Words(theme='address').randomizer(), list)
+    for address_word in Words(theme='address').randomizer():
         assert isinstance(address_word, str)
 
-    assert len(Words('countries').randomizer()) != 0
+    assert len(Words(theme='countries').randomizer()) != 0
 
     # if theme field is empty -> raise an error
     with pytest.raises(ValueError) as no_theme_error:
-        Words('').load_words()
+        Words(theme='').load_words()
     assert "Apparently, no theme is specified. Call available_themes() function to see available themes." in str(
         no_theme_error.value)
 
     # if different theme -> raise an error
     with pytest.raises(ValueError) as value_error:
-        Words('lol').load_words()
+        Words(theme='lol').load_words()
     assert "No such build-in theme. Hover over a Words() object to see available themes. Or call available_themes() function." in str(
         value_error.value)
 
@@ -70,15 +80,15 @@ def test_randomize_to_get_multiple_words():
     # "words to return/capitalize/letter_starts_with" function arguments
 
     random_words = Words(theme='random words').randomizer()
-    random_names_C = Words('names').randomizer(capitalize=True)
+    random_names_C = Words(theme='names').randomizer(capitalize=True)
     random_words_W = Words(theme='countries').randomizer(words_to_return=3)
     random_name_one_word = Words(theme='names').randomizer(return_one_word=True)
     random_words_L = Words(theme='random words').randomizer(letter_starts_with='ATM')
     random_words_LW = Words(theme='cities').randomizer(letter_starts_with='A', words_to_return=5)
-    random_names_WC = Words('surnames').randomizer(words_to_return=5, capitalize=True)
-    random_names_CL = Words('names').randomizer(capitalize=True, letter_starts_with='Y')
+    random_names_WC = Words(theme='surnames').randomizer(words_to_return=5, capitalize=True)
+    random_names_CL = Words(theme='names').randomizer(capitalize=True, letter_starts_with='Y')
     random_name_capitalized_one_word = Words(theme='surnames').randomizer(capitalize=True, return_one_word=True)
-    random_names_WCL = Words('names').randomizer(words_to_return=5, capitalize=True, letter_starts_with='V')
+    random_names_WCL = Words(theme='names').randomizer(words_to_return=5, capitalize=True, letter_starts_with='V')
 
     assert isinstance(random_words, list)
     for word in random_words:
