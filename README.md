@@ -1,12 +1,14 @@
-# Randomit
+# Randomit 🎲
 
 A Python library to generate random things.
 
 ___
 Currently, `randomit` can generate a [random word(s)](#randomize-words) based on a given [theme](#look-for-available-built-in-themes), 
-as well as [load your words files](#load-and-pass-your-files-with-words) to randomize them. To see what's coming, see [open projects](https://github.com/dimitryzub/randomit/projects).
+as well as [load your words files](#load-and-pass-your-files-with-words) to randomize them. 
 
-## Usage
+To see what's coming next, see [open projects](https://github.com/dimitryzub/randomit/projects).
+
+## 🕹️Usage
 
 > *Words will always be different on each execution no matter what arguments being passed.*
 
@@ -34,42 +36,28 @@ Words().randomizer(letter_starts_with='A', words_to_return=3, capitalize=True) #
 ```python
 Words().available_themes()
 # ['random words', 'names', 'surnames', 'cities', 'countries', 'address']
+# default is "random words" if "theme" argument is not specified
 ```
 
 ### Specify theme you want to get words from
 
 ```python
-Words('cities').randomizer() # pass available arguments + other theme from available_themes()
+Words(theme='cities').randomizer() # pass available arguments + other theme from available_themes()
 ```
 
 ### Load and pass your file(s) with words
-_Make sure all words are **lowercase**, otherwise it won't work._
+_Make sure all words are **lowercase**, and start on a **new line** (`\n`), otherwise it won't work._
 
 ```python
-# content of words_randomizer.py
-
-# add your file at the top:
-YOUR_FILE = Path(__file__).parent.resolve() / 'words_storage' / 'YOUR_LIST.txt'
-
-# add a short name in Words() class __init__ function
-def __init__(self, theme: str = 'YOUR THEME NAME' or 'ANOTHER THEME NAME'):
-        self.theme = theme.lower().strip()
-
-# pass file to load_words() function and add elif statement
-def load_words(self) -> list[str]:
-    if 'YOUR THEME NAME' in self.theme:
-        with open(YOUR_FILE, 'r', encoding='utf-8') as YOUR_WORDS:
-            return [YOUR_WORD.replace('\n', '') for YOUR_WORD in YOUR_WORDS]
-
 # call your words
-Words('YOUR THEME NAME').randomizer(return_one_word=True, capitalize=True)
+Words(file=YOUR_FILE).randomizer(return_one_word=True, capitalize=True)
 
-# Bazinga! 
+# Bazinga!
 ```
 
 ___
 
-## Installation
+## 📡 Installation
 
 ```
 $ pip install randomit
@@ -79,6 +67,10 @@ $ pip install randomit
 $ git clone https://github.com/dimitryzub/randomit.git
 ```
 
-## Suggestions
+## 👾 Suggestions
 
 If you have any suggestions or ideas what will be good to add, get involved in [discussions](https://github.com/dimitryzub/randomit/discussions) section.
+
+## 🔬 Issues
+
+For issues, visit [issues page](https://github.com/dimitryzub/randomit/issues) 🙃
