@@ -72,3 +72,5 @@ If you have any suggestions or ideas what will be good to add, get involved in [
 For issues, visit [issues page](https://github.com/dimitryzub/randomit/issues) 🙃
 
 Note for [replit.com](https://replit.com/) users. If you're using `randomit` on replit, it will throw an error for no obvious for me reason. If you know how to fix it, please, let me know. Installing package locally via `pip` doesn't produce that error as it should (_tested in Pycharm_).
+
+Testing if this could lead [somewhere](./_site/docs/docs.md)
