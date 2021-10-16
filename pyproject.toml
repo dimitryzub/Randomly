@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "randomit"
 homepage = "https://github.com/dimitryzub/randomit"
-version = "0.1.2"
+version = "0.1.5"
 description = "Python library to generate random things."
 authors = ["Dimitry Zub <dimitryzub@gmail.com>"]
 license = "MIT"
