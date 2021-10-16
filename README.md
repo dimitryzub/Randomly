@@ -33,10 +33,11 @@ Words().randomizer(letter_starts_with='A', words_to_return=3, capitalize=True) #
 
 ### Look for available built-in themes
 
+_If "**theme**" argument is not specified ➡ defaults to "**random words**"_.
+
 ```python
 Words().available_themes()
 # ['random words', 'names', 'surnames', 'cities', 'countries', 'address']
-# default is "random words" if "theme" argument is not specified
 ```
 
 ### Specify theme you want to get words from
