@@ -1,6 +1,6 @@
 import pytest
 from pathlib import Path
-from randomit.words_randomizer import Words
+from randomit import Words
 
 # test file for passing custom file to Words(file=FILE) object
 TEST_FILE = Path(__file__).parent.parent.resolve() / "randomit" / "words_storage" / "cities_list.txt"
