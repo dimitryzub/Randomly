@@ -15,7 +15,7 @@ To see what's coming next, see [open projects](https://github.com/dimitryzub/ran
 ### Randomize words
 
 ```python
-from randomit.words_randomizer import Words
+from randomit import Words
 
 # return one word
 Words().randomizer(return_one_word=True)
