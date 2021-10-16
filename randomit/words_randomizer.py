@@ -11,13 +11,21 @@ ADDRESS_LIST = Path(__file__).parent.resolve() / 'words_storage' / 'addresses_li
 
 class Words:
 
-    def __init__(self, theme: str = 'random words' or 'names' or 'surnames' or 'cities' or 'countries' or 'address'):
+    def __init__(self,
+                 file=None,
+                 theme: str = 'random words' or 'names' or 'surnames' or 'cities' or 'countries' or 'address'
+                 ):
         self.theme = theme.lower().strip()
+        self.file = file
 
     def available_themes(self) -> list[str]:
         return ['random words', 'names', 'surnames', 'cities', 'countries', 'address']
 
     def load_words(self) -> list[str]:
+
+        if self.file:
+            with open(self.file, 'r', encoding='utf-8') as file:
+                return [word.replace('\n', '') for word in file]
 
         if 'random' in self.theme:
             with open(RANDOM_WORDS_FILE, 'r', encoding='utf-8') as all_words:
@@ -62,13 +70,14 @@ class Words:
                    return_one_word: bool = False,
                    ) -> list[str] or str:
 
-        words = Words(self.theme).load_words()
+        words = Words(file=self.file, theme=self.theme).load_words()
 
         words_list = []
 
         if return_one_word and capitalize:
             for word in words:
                 words_list.append(word.title())
+
             return ''.join([words_list[random.randrange(0, len(words_list))] for _ in range(1)])
 
         if capitalize and words_to_return and letter_starts_with:
