@@ -73,4 +73,4 @@ For issues, visit [issues page](https://github.com/dimitryzub/randomit/issues) ð
 
 Note for [replit.com](https://replit.com/) users. If you're using `randomit` on replit, it will throw an error for no obvious for me reason. If you know how to fix it, please, let me know. Installing package locally via `pip` doesn't produce that error as it should (_tested in Pycharm_).
 
-Testing if this could lead [somewhere]({% link ./_site/docs/docs.md %})
+Testing if this could lead [somewhere]({% link /docs/docs.md %})
