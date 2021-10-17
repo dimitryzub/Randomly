@@ -1,0 +1,10 @@
+name: Workflow for Codecov example-python
+on: [push, pull_request]
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Upload with coverage to randomit"
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: true
