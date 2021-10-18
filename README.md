@@ -2,7 +2,17 @@
 
 A Python library to generate random things.
 
-![pypi package badge shipped by Gemfury](https://badge.fury.io/py/randomit.svg)
+![pypi package versions brought by shields.io](https://img.shields.io/pypi/pyversions/randomit)
+![pypi package badge brought by Gemfury](https://badge.fury.io/py/randomit.svg)
+![pypy month downloads brought by shields.io](https://img.shields.io/pypi/dm/randomit?color=gree)
+
+![licence brought by shields.io](https://img.shields.io/github/license/dimitryzub/randomit?color=blue)
+![repo size by shields.io](https://img.shields.io/github/repo-size/dimitryzub/randomit)
+![](https://img.shields.io/github/languages/code-size/dimitryzub/randomit)
+
+![twitter account brought by shield.io](https://img.shields.io/twitter/follow/DimitryZub?style=social)
+![reddit account brought by shield.io](https://img.shields.io/reddit/user-karma/combined/zdmit?style=social)
+![youtube account brought by shields.io](https://img.shields.io/youtube/channel/views/UClEr5pKL0gfo4uGVH4nWRYg?style=social)
 ___
 Currently, `randomit` can generate a [random word(s)](https://github.com/dimitryzub/randomit#randomize-words) based on a given [theme](https://github.com/dimitryzub/randomit#look-for-available-built-in-themes), 
 as well as [load your words files](https://github.com/dimitryzub/randomit#load-and-pass-your-files) to randomize them. 
