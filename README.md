@@ -2,6 +2,7 @@
 
 A Python library to generate random things.
 
+![codecov test brought by shield.io](https://img.shields.io/codecov/c/github/dimitryzub/randomit)
 ![pypi package versions brought by shields.io](https://img.shields.io/pypi/pyversions/randomit)
 ![pypi package badge brought by Gemfury](https://badge.fury.io/py/randomit.svg)
 ![pypy month downloads brought by shields.io](https://img.shields.io/pypi/dm/randomit?color=gree)
