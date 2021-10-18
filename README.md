@@ -5,10 +5,7 @@ A Python library to generate random things.
 ![pypi package versions brought by shields.io](https://img.shields.io/pypi/pyversions/randomit)
 ![pypi package badge brought by Gemfury](https://badge.fury.io/py/randomit.svg)
 ![pypy month downloads brought by shields.io](https://img.shields.io/pypi/dm/randomit?color=gree)
-
 ![licence brought by shields.io](https://img.shields.io/github/license/dimitryzub/randomit?color=blue)
-![repo size by shields.io](https://img.shields.io/github/repo-size/dimitryzub/randomit)
-![](https://img.shields.io/github/languages/code-size/dimitryzub/randomit)
 
 ![twitter account brought by shield.io](https://img.shields.io/twitter/follow/DimitryZub?style=social)
 ![reddit account brought by shield.io](https://img.shields.io/reddit/user-karma/combined/zdmit?style=social)
