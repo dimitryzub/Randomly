@@ -2,6 +2,7 @@
 
 A Python library to generate random things.
 
+![pypi package badge shipped by Gemfury](https://badge.fury.io/py/randomit.svg)
 ___
 Currently, `randomit` can generate a [random word(s)](https://github.com/dimitryzub/randomit#randomize-words) based on a given [theme](https://github.com/dimitryzub/randomit#look-for-available-built-in-themes), 
 as well as [load your words files](https://github.com/dimitryzub/randomit#load-and-pass-your-files) to randomize them. 
