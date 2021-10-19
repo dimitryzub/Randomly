@@ -21,3 +21,8 @@ jobs:
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+
+       - name: The job has succeeded 🎆
+        if: ${{ success() }}
+       - name: The job has failed 🌚
+        if: ${{ failure() }}
