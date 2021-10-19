@@ -19,9 +19,5 @@ jobs:
           poetry run python -m pytest --cov=./ --cov-report=xml
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
-       - name: The job has succeeded 🎆
-        if: ${{ success() }}
-       - name: The job has failed 🌚
-        if: ${{ failure() }}
-      - with:
+        with:
           token: ${{ secrets.CODECOV_TOKEN }}
