@@ -23,6 +23,12 @@ def test_load_words():
         assert isinstance(custom_word, str)
 
     # when passing built-in themes:
+    assert isinstance(Words(theme='random').randomizer(), list)
+    for rand_word in Words(theme='random').randomizer():
+        assert isinstance(rand_word, str)
+
+    assert len(Words(theme='random').randomizer()) != 0
+
     assert isinstance(Words(theme='random words').randomizer(), list)
     for rand_word in Words(theme='random words').randomizer():
         assert isinstance(rand_word, str)
@@ -57,11 +63,17 @@ def test_load_words():
 
     assert len(Words(theme='countries').randomizer()) != 0
 
-    # if theme field is empty -> raise an error
+    # if 'theme' field is empty -> raise an error
     with pytest.raises(ValueError) as no_theme_error:
         Words(theme='').load_words()
-    assert "Apparently, no theme is specified. Call available_themes() function to see available themes." in str(
+    assert "Apparently, no theme specified. Please add theme='THEME' argument." in str(
         no_theme_error.value)
+
+    # if 'file' field is empty -> raise an error
+    with pytest.raises(ValueError) as no_file_error:
+        Words(file='').load_words()
+    assert "Apparently, no file specified. Please add file='FILE' argument." in str(
+        no_file_error.value)
 
     # if different theme -> raise an error
     with pytest.raises(ValueError) as value_error:
@@ -86,7 +98,7 @@ def test_randomize_to_get_multiple_words():
     random_words_L = Words(theme='random words').randomizer(letter_starts_with='ATM')
     random_words_LW = Words(theme='cities').randomizer(letter_starts_with='A', words_to_return=5)
     random_names_WC = Words(theme='surnames').randomizer(words_to_return=5, capitalize=True)
-    random_names_CL = Words(theme='names').randomizer(capitalize=True, letter_starts_with='Y')
+    random_names_CL = Words(theme='random').randomizer(capitalize=True, letter_starts_with='Y')
     random_name_capitalized_one_word = Words(theme='surnames').randomizer(capitalize=True, return_one_word=True)
     random_names_WCL = Words(theme='names').randomizer(words_to_return=5, capitalize=True, letter_starts_with='V')
 
@@ -146,3 +158,22 @@ def test_randomize_to_get_multiple_words():
         assert word_WCL.startswith('V')
 
     assert len(random_names_WCL) == 5
+
+def test_addresses():
+    address_list_dict = Words(theme='address').randomizer(return_dict=True)
+    address_list_dict_return = Words(theme='address').randomizer(return_dict=True, words_to_return=3)
+
+    assert isinstance(address_list_dict, list)
+    assert isinstance(address_list_dict[0], dict)
+
+    for values in address_list_dict:
+        for key ,value in values.items():
+            assert isinstance(value, str)
+
+    assert isinstance(address_list_dict_return, list)
+    assert len(address_list_dict_return) == 3
+    assert isinstance(address_list_dict_return[0], dict)
+
+    for values in address_list_dict_return:
+        for key ,value in values.items():
+            assert isinstance(value, str)
