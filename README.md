@@ -2,10 +2,12 @@
 
 A Python library to generate random things.
 
-![codecov test brought by shield.io](https://img.shields.io/codecov/c/github/dimitryzub/randomit)
+[![codecov coverage](https://codecov.io/gh/dimitryzub/randomit/branch/main/graph/badge.svg?token=B2XA8Y3R5M)](https://codecov.io/gh/dimitryzub/randomit)
+![example workflow](https://github.com/dimitryzub/randomit/actions/workflows/ci.yml/badge.svg)
+
 ![pypi package versions brought by shields.io](https://img.shields.io/pypi/pyversions/randomit)
 ![pypi package badge brought by Gemfury](https://badge.fury.io/py/randomit.svg)
-![pypy month downloads brought by shields.io](https://img.shields.io/pypi/dm/randomit?color=gree)
+[![Downloads](https://static.pepy.tech/personalized-badge/randomit?period=month&units=international_system&left_color=grey&right_color=brightgreen&left_text=Downloads)](https://pepy.tech/project/randomit)
 ![licence brought by shields.io](https://img.shields.io/github/license/dimitryzub/randomit?color=blue)
 
 ![twitter account brought by shield.io](https://img.shields.io/twitter/follow/DimitryZub?style=social)
@@ -38,6 +40,35 @@ Words().randomizer(words_to_return=3)  # ['axis', 'overabundant', 'superuser']
 Words().randomizer(letter_starts_with='A')  # returns all words that starts with letter "A" 
 Words().randomizer(letter_starts_with='A', words_to_return=3)  # ['abandoned', 'able', 'absolute']
 Words().randomizer(letter_starts_with='A', words_to_return=3, capitalize=True) # ['Apron', 'Ashes', 'Anvil']
+```
+
+### Get Addresses
+_If you want to add your list of addresses, have a look at `addresses_list.txt` and format it as it's formatted there to work properly._
+
+Format:`address, city, state, zip`
+
+```python
+import json
+
+address_list = Words(theme='address').randomizer(return_dict=True, words_to_return=1)
+
+print(json.dumps(address_list, indent=2))
+
+'''
+[
+  {
+    "address": "777 brockton avenue",
+    "city": "abington",
+    "state": "ma",
+    "zip": "2351"
+  }
+]
+'''
+
+# if "return_dict" argument isn't specified it will return a list():
+'''
+["2465 hempstead turnpike, east meadow ny 11554"]
+'''
 ```
 
 ### Look for available built-in themes
@@ -88,3 +119,7 @@ For issues, visit [issues page](https://github.com/dimitryzub/randomit/issues) �
 Note for [replit.com](https://replit.com/) users. If you’re using `randomit` on replit, it will throw an error for no obvious for me reason. If you know how to fix it, please, let me know. 
 
 Installing package locally via `pip` doesn’t produce such error as it should (_tested in Pycharm_).
+
+## 📜 Docs
+
+To read more in-depth about something, visit [documentation](https://dimitryzub.github.io/randomit/docs/docs.html) page.
