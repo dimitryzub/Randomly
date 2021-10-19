@@ -1,4 +1,4 @@
-import random
+import random, re
 from pathlib import Path
 
 RANDOM_WORDS_FILE = Path(__file__).parent / 'words_storage' / 'random_words.txt'
@@ -23,41 +23,43 @@ class Words:
 
     def load_words(self) -> list[str]:
 
+        if self.theme == '':
+            raise ValueError("Apparently, no theme specified. Please add theme='THEME' argument.")
+
+        if self.file == '':
+            raise ValueError("Apparently, no file specified. Please add file='FILE' argument.")
+
         if self.file:
             with open(self.file, 'r', encoding='utf-8') as file:
                 return [word.replace('\n', '') for word in file]
 
-        if 'random' in self.theme:
+        if self.theme == 'random':
             with open(RANDOM_WORDS_FILE, 'r', encoding='utf-8') as all_words:
                 return [word.replace('\n', '') for word in all_words]
 
-        elif 'random words' in self.theme:
+        elif self.theme == 'random words':
+            with open(RANDOM_WORDS_FILE, 'r', encoding='utf-8') as all_words:
+                return [word.replace('\n', '') for word in all_words]
+
+        elif self.theme == 'names':
             with open(NAMES_FILE, 'r', encoding='utf-8') as all_words:
                 return [word.replace('\n', '') for word in all_words]
 
-        elif 'names' in self.theme:
-            with open(NAMES_FILE, 'r', encoding='utf-8') as all_words:
-                return [word.replace('\n', '') for word in all_words]
-
-        elif 'surnames' in self.theme:
+        elif self.theme == 'surnames':
             with open(SURNAMES_FILE, 'r', encoding='utf-8') as all_words:
                 return [word.replace('\n', '') for word in all_words]
 
-        elif 'cities' in self.theme:
+        elif self.theme == 'cities':
             with open(CITIES_FILE, 'r', encoding='utf-8') as all_words:
                 return [word.replace('\n', '') for word in all_words]
 
-        elif 'countries' in self.theme:
+        elif self.theme == 'countries':
             with open(COUNTRIES_FILE, 'r', encoding='utf-8') as all_words:
                 return [word.replace('\n', '') for word in all_words]
 
-        elif 'address' in self.theme:
+        elif self.theme == 'address':
             with open(ADDRESS_LIST, 'r', encoding='utf-8') as all_words:
                 return [word.replace('\n', '') for word in all_words]
-
-        elif self.theme == '':
-            raise ValueError(
-                "Apparently, no theme is specified. Call available_themes() function to see available themes.")
 
         else:
             raise ValueError(
@@ -68,11 +70,44 @@ class Words:
                    words_to_return: int = 0,
                    capitalize: bool = False,
                    return_one_word: bool = False,
+                   return_dict: bool = False,
                    ) -> list[str] or str:
 
         words = Words(file=self.file, theme=self.theme).load_words()
 
         words_list = []
+
+        if return_dict and words_to_return and self.theme == 'address':
+            for word in words:
+                address = ''.join(re.findall(r'(.*),', word))
+                city = ''.join(re.findall(r',\s?(\w+\s?\w{3,})', word))
+                state = ''.join(re.findall(r'(\w{2})\s?\d+$', word))
+                zip_code = ''.join(re.findall(r'\d+$', word))
+
+                words_list.append({
+                    "address": address,
+                    "city": city,
+                    "state": state,
+                    "zip": zip_code
+                })
+
+            return words_list[:words_to_return]
+
+        if self.theme == 'address' and return_dict:
+            for word in words:
+                address = ''.join(re.findall(r'(.*),', word))
+                city = ''.join(re.findall(r',\s?(\w+\s?\w{3,})', word))
+                state = ''.join(re.findall(r'(\w{2})\s?\d+$', word))
+                zip_code = ''.join(re.findall(r'\d+$', word))
+
+                words_list.append({
+                    "address": address,
+                    "city": city,
+                    "state": state,
+                    "zip": zip_code
+                })
+
+            return words_list
 
         if return_one_word and capitalize:
             for word in words:
