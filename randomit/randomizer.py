@@ -1,5 +1,6 @@
 import random, re
 from pathlib import Path
+from randomit.parsers.random_images import ImageScraper
 
 RANDOM_WORDS_FILE = Path(__file__).parent / 'words_storage' / 'random_words.txt'
 NAMES_FILE = Path(__file__).parent.resolve() / 'words_storage' / 'names_list.txt'
@@ -65,7 +66,7 @@ class Words:
             raise ValueError(
                 "No such build-in theme. Hover over a Words() object to see available themes. Or call available_themes() function.")
 
-    def randomizer(self,
+    def randomize(self,
                    letter_starts_with: str = '',
                    words_to_return: int = 0,
                    capitalize: bool = False,
@@ -169,3 +170,30 @@ class Words:
                 words_list.append(word)
 
             return words_list
+
+
+class Images:
+
+    '''
+    Images() class scrapes Google Images via passed query and returns a list of 100 images.
+    Then if "amount_to_return" is passed, it randomize URL images on each execution.
+    '''
+
+    def __init__(self, query: str = '', amount_to_return: int = 100):
+        self.query = query
+        self.amount_to_return = amount_to_return
+
+    def get_randomized(self):
+
+        images = ImageScraper(query=self.query, amount_to_return=self.amount_to_return).scrape_images()
+
+        image_list = []
+
+        if self.query and self.amount_to_return:
+            for image in images:
+                image_list.append(image)
+
+            return [image_list[random.randrange(0, len(image_list))] for _ in range(self.amount_to_return)]
+
+        if self.query == '':
+            raise ValueError("It seems like you enter an empty query. Make sure you typed something.")
