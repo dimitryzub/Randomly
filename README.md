@@ -14,43 +14,43 @@ A Python library to generate random things.
 ![reddit account brought by shield.io](https://img.shields.io/reddit/user-karma/combined/zdmit?style=social)
 ![youtube account brought by shields.io](https://img.shields.io/youtube/channel/views/UClEr5pKL0gfo4uGVH4nWRYg?style=social)
 ___
-Currently, `randomit` can generate a [random word(s)](https://github.com/dimitryzub/randomit#randomize-words) based on a given [theme](https://github.com/dimitryzub/randomit#look-for-available-built-in-themes), 
-as well as [load your words files](https://github.com/dimitryzub/randomit#load-and-pass-your-files) to randomize them. 
+Currently, `randomit` can:
+- Generate [random word(s)](https://github.com/dimitryzub/randomit#randomize-words) based on a given [theme](https://github.com/dimitryzub/randomit#look-for-available-built-in-themes).
+- [Load your files](https://github.com/dimitryzub/randomit#load-and-pass-your-files) that _contain **words**_ to randomize them. 
+- [Randomize images](#random-images) based on a given query.
 
 To see what's coming next, see [open projects](https://github.com/dimitryzub/randomit/projects).
 
-## 🕹️Usage
-
-> *Words will always be different on each execution no matter what arguments being passed.*
+## 💡Usage
 
 ### Randomize words
 
+> *Words will always be different on each execution no matter what arguments being passed.*
+
+
 ```python
-from randomit.words_randomizer import Words
+from randomit.randomizer import Words
 
 # return one word
-Words().randomizer(return_one_word=True)
+Words(theme='random words').randomize(return_one_word=True)
 # cabinet
 # bristlecone pine
 # dim - bright
 
-Words().randomizer()  # returns a list of 17k words
-Words().randomizer(words_to_return=3)  # ['axis', 'overabundant', 'superuser']
+Words(theme='random words').randomize()  # returns a list of 17k words
+Words(theme='random words').randomize(words_to_return=3)  # ['axis', 'overabundant', 'superuser']
 
-Words().randomizer(letter_starts_with='A')  # returns all words that starts with letter "A" 
-Words().randomizer(letter_starts_with='A', words_to_return=3)  # ['abandoned', 'able', 'absolute']
-Words().randomizer(letter_starts_with='A', words_to_return=3, capitalize=True) # ['Apron', 'Ashes', 'Anvil']
+Words(theme='random words').randomize(letter_starts_with='A')  # returns all words that starts with letter "A" 
+Words(theme='names').randomize(letter_starts_with='A', words_to_return=3)  # ['abandoned', 'able', 'absolute']
+Words(theme='names').randomize(letter_starts_with='A', words_to_return=3, capitalize=True)  # ['Apron', 'Ashes', 'Anvil']
 ```
 
 ### Get Addresses
-_If you want to add your list of addresses, have a look at `addresses_list.txt` and format it as it's formatted there to work properly._
-
-Format:`address, city, state, zip`
 
 ```python
 import json
 
-address_list = Words(theme='address').randomizer(return_dict=True, words_to_return=1)
+address_list = Words(theme='address').randomize(words_to_return=1, return_dict=True)
 
 print(json.dumps(address_list, indent=2))
 
@@ -71,6 +71,10 @@ print(json.dumps(address_list, indent=2))
 '''
 ```
 
+_If you want to add your list of addresses, have a look at `addresses_list.txt` and format it as it's formatted there to work properly._
+
+Format:`address, city, state, zip`
+
 ### Look for available built-in themes
 
 _If "**theme**" argument is not specified ➡ defaults to "**random words**"_.
@@ -83,20 +87,33 @@ Words().available_themes()
 ### Specify theme you want to get words from
 
 ```python
-Words(theme='cities').randomizer() # pass available arguments
+Words(theme='cities').randomize()  # pass available arguments
 ```
 
-### Load and pass your file(s)
+### Load and pass file(s) with words
 _Make sure all words are **lowercase**, and start on a **new line** (`\n`), otherwise it won't work._
 
 ```python
 # call your words
-Words(file=YOUR_FILE).randomizer(return_one_word=True, capitalize=True)
+Words(file=YOUR_FILE).randomize(capitalize=True, return_one_word=True)
 
 # Bazinga!
 ```
 
 ___
+
+### Random Images
+
+_Enter any query, and it will return a random image(s) URL based on the provided query, and it will be random on each execution._ 
+
+```python
+from randomit.randomizer import Images
+
+Images(query='eminem', amount_to_return=3).get_randomized() 
+# ['https://ichef.bbci.co.uk/news/1024/branded_news/12C99/production/_103435967_eminem976.jpg', 'https://www.gannett-cdn.com/presto/2020/09/30/PDTF/2d162b17-ca01-40bc-a3da-353c6a32ac92-NewEminemPromo.jpg?width=660&height=505&fit=crop&format=pjpg&auto=webp', 'https://www.rollingstone.com/wp-content/uploads/2015/09/EminemLead.jpg?resize=1800,1200&w=450']
+
+# if "amount_to_return" argument is not specified -> defaults to result of 100 images
+```
 
 ## 📡 Installation
 
@@ -118,8 +135,8 @@ For issues, visit [issues page](https://github.com/dimitryzub/randomit/issues) �
 
 Note for [replit.com](https://replit.com/) users. If you’re using `randomit` on replit, it will throw an error for no obvious for me reason. If you know how to fix it, please, let me know. 
 
-Installing package locally via `pip` doesn’t produce such error as it should (_tested in Pycharm_).
+Installing package locally via `pip` doesn’t produce such error as it should (_tested in Pycharm and VSCode_).
 
 ## 📜 Docs
 
-To read more in-depth about something, visit [documentation](https://dimitryzub.github.io/randomit/docs/docs.html) page.
+To read more in-depth about something, visit [documentation](https://dimitryzub.github.io/randomit/docs/docs.html) page. Currently, there's nothing there. It's under development. Soon there will be more examples. 
