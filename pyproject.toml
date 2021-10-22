@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "randomit"
 homepage = "https://github.com/dimitryzub/randomit"
-version = "0.1.7"
+version = "0.2.0"
 description = "Python library to generate random things."
 authors = ["Dimitry Zub <dimitryzub@gmail.com>"]
 license = "MIT"
@@ -19,6 +19,9 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = ">=3.8,<4.0"
+requests = "^2.26.0"
+lxml = "^4.6.3"
+bs4 = "^0.0.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
