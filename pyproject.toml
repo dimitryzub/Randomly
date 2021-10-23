@@ -20,8 +20,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = ">=3.8,<4.0"
 requests = "^2.26.0"
-lxml = "^4.6.3"
-bs4 = "^0.0.1"
+pexels-api = "^1.0.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
