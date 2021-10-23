@@ -109,10 +109,10 @@ _Enter any query, and it will return a random image(s) URL based on the provided
 ```python
 from randomit.randomizer import Images
 
-Images(query='eminem', amount_to_return=3).get_randomized() 
-# ['https://ichef.bbci.co.uk/news/1024/branded_news/12C99/production/_103435967_eminem976.jpg', 'https://www.gannett-cdn.com/presto/2020/09/30/PDTF/2d162b17-ca01-40bc-a3da-353c6a32ac92-NewEminemPromo.jpg?width=660&height=505&fit=crop&format=pjpg&auto=webp', 'https://www.rollingstone.com/wp-content/uploads/2015/09/EminemLead.jpg?resize=1800,1200&w=450']
+Images(query='cats', amount_to_return=3).get_randomized() 
+# ['https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg', 'https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg', 'https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg']
 
-# if "amount_to_return" argument is not specified -> defaults to result of 100 images
+# if "amount_to_return" argument is not specified -> defaults to 80 images per page.
 ```
 
 ## 📡 Installation
