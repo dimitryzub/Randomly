@@ -5,7 +5,7 @@ from pexels_api import API
 A process to make it work:
 1. Create account at https://www.pexels.com/
 2. Go to https://www.pexels.com/api -> click on "Your API KEY"
-3. Place in your env variable
+3. Place in your .env variable
 '''
 api = API(os.environ.get("API_KEY"))
 
