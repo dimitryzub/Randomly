@@ -1,7 +1,6 @@
 import pytest
 from pathlib import Path
 from randomit.randomizer import Words
-from randomit.randomizer import Images
 
 # test file for passing custom file to Words(file=FILE) object
 TEST_FILE = Path(__file__).parent.parent.resolve() / "randomit" / "words_storage" / "cities_list.txt"
@@ -179,22 +178,3 @@ def test_addresses():
     for values in address_list_dict_return:
         for key, value in values.items():
             assert isinstance(value, str)
-
-
-# test require internet connection because of HTTP request call in ImageScraper() class
-# TODO: add mocks (https://requests-mock.readthedocs.io/en/latest/overview.html)
-def test_image_randomizer():
-    images = Images(query='skyrim').get_randomized()
-    images_amount_to_return = Images(query='skyrim', amount_to_return=3).get_randomized()
-
-    for image in images:
-        assert isinstance(image, str)
-
-    for image_to_return in images_amount_to_return:
-        assert isinstance(image_to_return, str)
-    assert len(images_amount_to_return) == 3
-
-    with pytest.raises(ValueError) as empty_image_query:
-        Images(query='').get_randomized()
-
-    assert "It seems like you enter an empty query. Make sure you typed something." in str(empty_image_query.value)
