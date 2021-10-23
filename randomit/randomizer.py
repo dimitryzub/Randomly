@@ -174,18 +174,13 @@ class Words:
 
 class Images:
 
-    '''
-    Images() class scrapes Google Images via passed query and returns a list of 100 images.
-    Then if "amount_to_return" is passed, it randomize URL images on each execution.
-    '''
-
-    def __init__(self, query: str = '', amount_to_return: int = 100):
+    def __init__(self, query: str = '', amount_to_return: int = 80, page: int = 1):
         self.query = query
         self.amount_to_return = amount_to_return
+        self.page = page
 
     def get_randomized(self):
-
-        images = ImageScraper(query=self.query, amount_to_return=self.amount_to_return).scrape_images()
+        images = ImageScraper(query=self.query, amount_to_return=self.amount_to_return, page=self.page).get_images()
 
         image_list = []
 
@@ -194,6 +189,3 @@ class Images:
                 image_list.append(image)
 
             return [image_list[random.randrange(0, len(image_list))] for _ in range(self.amount_to_return)]
-
-        if self.query == '':
-            raise ValueError("It seems like you enter an empty query. Make sure you typed something.")
