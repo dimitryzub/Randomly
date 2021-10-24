@@ -94,14 +94,14 @@ def test_randomize_to_get_multiple_words():
 
     random_words = Words(theme='random words').randomize()
     random_names_C = Words(theme='names').randomize(capitalize=True)
-    random_words_W = Words(theme='countries').randomize(words_to_return=3)
+    random_words_W = Words(theme='countries').randomize(amount_to_return=3)
     random_name_one_word = Words(theme='names').randomize(return_one_word=True)
     random_words_L = Words(theme='random words').randomize(letter_starts_with='ATM')
-    random_words_LW = Words(theme='cities').randomize(letter_starts_with='A', words_to_return=5)
-    random_names_WC = Words(theme='surnames').randomize(words_to_return=5, capitalize=True)
+    random_words_LW = Words(theme='cities').randomize(letter_starts_with='A', amount_to_return=5)
+    random_names_WC = Words(theme='surnames').randomize(amount_to_return=5, capitalize=True)
     random_names_CL = Words(theme='random').randomize(letter_starts_with='Y', capitalize=True)
     random_name_capitalized_one_word = Words(theme='surnames').randomize(capitalize=True, return_one_word=True)
-    random_names_WCL = Words(theme='names').randomize(letter_starts_with='V', words_to_return=5, capitalize=True)
+    random_names_WCL = Words(theme='names').randomize(letter_starts_with='V', amount_to_return=5, capitalize=True)
 
     assert isinstance(random_words, list)
     for word in random_words:
@@ -163,10 +163,15 @@ def test_randomize_to_get_multiple_words():
 
 def test_addresses():
     address_list_dict = Words(theme='address').randomize(return_dict=True)
-    address_list_dict_return = Words(theme='address').randomize(words_to_return=3, return_dict=True)
+    address_list = Words(theme='address').randomize()
+    address_list_dict_return = Words(theme='address').randomize(amount_to_return=3, return_dict=True)
 
     assert isinstance(address_list_dict, list)
     assert isinstance(address_list_dict[0], dict)
+
+    assert isinstance(address_list, list)
+    for address in address_list:
+        assert isinstance(address, str)
 
     for values in address_list_dict:
         for key, value in values.items():

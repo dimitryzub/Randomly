@@ -19,10 +19,10 @@ class Words:
         self.theme = theme.lower().strip()
         self.file = file
 
-    def available_themes(self) -> list[str]:
+    def available_themes(self):
         return ['random words', 'names', 'surnames', 'cities', 'countries', 'address']
 
-    def load_words(self) -> list[str]:
+    def load_words(self):
 
         if self.theme == '':
             raise ValueError("Apparently, no theme specified. Please add theme='THEME' argument.")
@@ -68,7 +68,7 @@ class Words:
 
     def randomize(self,
                   letter_starts_with: str = '',
-                  words_to_return: int = 0,
+                  amount_to_return: int = 0,
                   capitalize: bool = False,
                   return_one_word: bool = False,
                   return_dict: bool = False,
@@ -78,7 +78,7 @@ class Words:
 
         words_list = []
 
-        if return_dict and words_to_return and self.theme == 'address':
+        if return_dict and amount_to_return and self.theme == 'address':
             for word in words:
                 address = ''.join(re.findall(r'(.*),', word))
                 city = ''.join(re.findall(r',\s?(\w+\s?\w{3,})', word))
@@ -92,7 +92,7 @@ class Words:
                     "zip": zip_code
                 })
 
-            return words_list[:words_to_return]
+            return [words_list[random.randrange(0, len(words_list))] for _ in range(amount_to_return)]
 
         if self.theme == 'address' and return_dict:
             for word in words:
@@ -108,7 +108,7 @@ class Words:
                     "zip": zip_code
                 })
 
-            return words_list
+            return [words_list[random.randrange(0, len(words_list))] for _ in range(1, 702)]  # 1-702 number of total addresses in .txt file
 
         if return_one_word and capitalize:
             for word in words:
@@ -116,18 +116,18 @@ class Words:
 
             return ''.join([words_list[random.randrange(0, len(words_list))] for _ in range(1)])
 
-        if capitalize and words_to_return and letter_starts_with:
+        if capitalize and amount_to_return and letter_starts_with:
             for word in words:
                 if word.startswith(letter_starts_with.lower()):
                     words_list.append(word.title())
 
-            return [words_list[random.randrange(0, len(words_list))] for _ in range(words_to_return)]
+            return [words_list[random.randrange(0, len(words_list))] for _ in range(amount_to_return)]
 
-        if capitalize and words_to_return:
+        if capitalize and amount_to_return:
             for word in words:
                 words_list.append(word.title())
 
-            return [words_list[random.randrange(0, len(words_list))] for _ in range(words_to_return)]
+            return [words_list[random.randrange(0, len(words_list))] for _ in range(amount_to_return)]
 
         if capitalize and letter_starts_with:
             for word in words:
@@ -136,12 +136,12 @@ class Words:
 
             return words_list
 
-        if words_to_return and letter_starts_with:
+        if amount_to_return and letter_starts_with:
             for word in words:
                 if word.startswith(letter_starts_with.lower()):
                     words_list.append(word)
 
-            return [words_list[random.randrange(0, len(words_list))] for _ in range(words_to_return)]
+            return [words_list[random.randrange(0, len(words_list))] for _ in range(amount_to_return)]
 
         if capitalize:
             for word in words:
@@ -149,11 +149,11 @@ class Words:
 
             return words_list
 
-        elif words_to_return:
+        elif amount_to_return:
             for word in words:
                 words_list.append(word)
 
-            return [words_list[random.randrange(0, len(words_list))] for _ in range(words_to_return)]
+            return [words_list[random.randrange(0, len(words_list))] for _ in range(amount_to_return)]
 
         elif letter_starts_with:
             for word in words:
