@@ -106,18 +106,13 @@ ___
 
 _Enter any query, and it will return a random image(s) URL based on the provided query, and it will be random on each execution._ 
 
-`Images()` class uses [Pexels API](https://www.pexels.com/api). A process to generate random images:
-1. Create account at https://www.pexels.com/
-2. Go to https://www.pexels.com/api -> click on "Your API KEY"
-3. Place API key in your `.env` variable and place it under `random_images.py` - `api = API(os.environ.get("API_KEY"))`
-
 ```python
 from randomit.randomizer import Images
 
 Images(query='cats', amount_to_return=3).get_randomized() 
 # ['https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg', 'https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg', 'https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg']
 
-# if "amount_to_return" argument is not specified -> defaults to 80 images per page.
+# if "amount_to_return" argument is not specified -> defaults to batch of 100 images.
 ```
 
 ## 📡 Installation
