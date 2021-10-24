@@ -23,10 +23,9 @@ To see what's coming next, see [open projects](https://github.com/dimitryzub/ran
 
 ## 💡Usage
 
-### Randomize words
+> *Words/addresses will always be different on each execution no matter what arguments being passed.*
 
-> *Words will always be different on each execution no matter what arguments being passed.*
-
+### Get Random Words
 
 ```python
 from randomit.randomizer import Words
@@ -38,29 +37,29 @@ Words(theme='random words').randomize(return_one_word=True)
 # dim - bright
 
 Words(theme='random words').randomize()  # returns a list of 17k words
-Words(theme='random words').randomize(words_to_return=3)  # ['axis', 'overabundant', 'superuser']
+Words(theme='random words').randomize(amount_to_return=3)  # ['axis', 'overabundant', 'superuser']
 
 Words(theme='random words').randomize(letter_starts_with='A')  # returns all words that starts with letter "A" 
-Words(theme='names').randomize(letter_starts_with='A', words_to_return=3)  # ['abandoned', 'able', 'absolute']
-Words(theme='names').randomize(letter_starts_with='A', words_to_return=3, capitalize=True)  # ['Apron', 'Ashes', 'Anvil']
+Words(theme='random words').randomize(letter_starts_with='A', amount_to_return=3)  # ['abandoned', 'able', 'absolute']
+Words(theme='names').randomize(letter_starts_with='A', amount_to_return=3, capitalize=True)  # ['Apron', 'Ashes', 'Anvil']
 ```
 
-### Get Addresses
+### Get Random Addresses
 
 ```python
 import json
 
-address_list = Words(theme='address').randomize(words_to_return=1, return_dict=True)
+address_list = Words(theme='address').randomize(amount_to_return=1, return_dict=True)
 
 print(json.dumps(address_list, indent=2))
 
 '''
 [
   {
-    "address": "777 brockton avenue",
-    "city": "abington",
-    "state": "ma",
-    "zip": "2351"
+    "address": "279 troy road",
+    "city": "east greenbush",
+    "state": "ny",
+    "zip": "12061"
   }
 ]
 '''
@@ -102,7 +101,7 @@ Words(file=YOUR_FILE).randomize(capitalize=True, return_one_word=True)
 
 ___
 
-### Random Images
+### Get Random Images
 
 _Enter any query, and it will return a random image(s) URL based on the provided query, and it will be random on each execution._ 
 
