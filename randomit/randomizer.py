@@ -67,12 +67,12 @@ class Words:
                 "No such build-in theme. Hover over a Words() object to see available themes. Or call available_themes() function.")
 
     def randomize(self,
-                   letter_starts_with: str = '',
-                   words_to_return: int = 0,
-                   capitalize: bool = False,
-                   return_one_word: bool = False,
-                   return_dict: bool = False,
-                   ) -> list[str] or str:
+                  letter_starts_with: str = '',
+                  words_to_return: int = 0,
+                  capitalize: bool = False,
+                  return_one_word: bool = False,
+                  return_dict: bool = False,
+                  ) -> list[str] or str:
 
         words = Words(file=self.file, theme=self.theme).load_words()
 
@@ -174,13 +174,12 @@ class Words:
 
 class Images:
 
-    def __init__(self, query: str = '', amount_to_return: int = 80, page: int = 1):
+    def __init__(self, query: str = '', amount_to_return: int = 100):
         self.query = query
         self.amount_to_return = amount_to_return
-        self.page = page
 
     def get_randomized(self):
-        images = ImageScraper(query=self.query, amount_to_return=self.amount_to_return, page=self.page).get_images()
+        images = ImageScraper(query=self.query, amount_to_return=self.amount_to_return).get_images()
 
         image_list = []
 
@@ -189,3 +188,6 @@ class Images:
                 image_list.append(image)
 
             return [image_list[random.randrange(0, len(image_list))] for _ in range(self.amount_to_return)]
+
+        if self.query == '':
+            raise ValueError("It seems like you enter an empty query. Make sure you typed something.")
