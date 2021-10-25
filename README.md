@@ -5,14 +5,14 @@ A Python library to generate random things.
 [![codecov coverage](https://codecov.io/gh/dimitryzub/randomit/branch/main/graph/badge.svg?token=B2XA8Y3R5M)](https://codecov.io/gh/dimitryzub/randomit)
 ![example workflow](https://github.com/dimitryzub/randomit/actions/workflows/ci.yml/badge.svg)
 
-![pypi package versions brought by shields.io](https://img.shields.io/pypi/pyversions/randomit)
 ![pypi package badge brought by Gemfury](https://badge.fury.io/py/randomit.svg)
 [![Downloads](https://static.pepy.tech/personalized-badge/randomit?period=month&units=international_system&left_color=grey&right_color=brightgreen&left_text=Downloads)](https://pepy.tech/project/randomit)
+
+![pypi package versions brought by shields.io](https://img.shields.io/pypi/pyversions/randomit)
 ![licence brought by shields.io](https://img.shields.io/github/license/dimitryzub/randomit?color=blue)
+![repo size](https://img.shields.io/github/repo-size/dimitryzub/randomit)
 
 ![twitter account brought by shield.io](https://img.shields.io/twitter/follow/DimitryZub?style=social)
-![reddit account brought by shield.io](https://img.shields.io/reddit/user-karma/combined/zdmit?style=social)
-![youtube account brought by shields.io](https://img.shields.io/youtube/channel/views/UClEr5pKL0gfo4uGVH4nWRYg?style=social)
 ___
 Currently, `randomit` can:
 - Generate [random word(s)](https://github.com/dimitryzub/randomit#get-random-words) based on a given [theme](https://github.com/dimitryzub/randomit#look-for-available-built-in-themes).
