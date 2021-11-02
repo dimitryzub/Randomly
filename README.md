@@ -18,6 +18,7 @@ Currently, `randomit` can:
 - Generate [random word(s)](https://github.com/dimitryzub/randomit#get-random-words) based on a given [theme](https://github.com/dimitryzub/randomit#look-for-available-built-in-themes).
 - [Load your files](https://github.com/dimitryzub/randomit#load-and-pass-your-files) that _contain **words**_ to randomize them. 
 - [Randomize images](https://github.com/dimitryzub/randomit#get-random-images) based on a given query.
+- Generate random [phone numbers](https://dimitryzub.github.io/randomit/docs/docs.html#get-phone-number).
 
 To see what's coming next, see [open projects](https://github.com/dimitryzub/randomit/projects).
 
