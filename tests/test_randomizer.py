@@ -1,9 +1,8 @@
-import pytest
+import pytest, re
 from pathlib import Path
-from randomit.randomizer import Words
-from randomit.randomizer import Images
+from randomit.randomizer import Words, Images, PhoneNumbers
 
-# test file for passing custom file to Words(file=FILE) object
+# test file while passing custom file to Words(file=FILE) object
 TEST_FILE = Path(__file__).parent.parent.resolve() / "randomit" / "words_storage" / "cities_list.txt"
 
 
@@ -203,3 +202,15 @@ def test_image_randomizer():
     with pytest.raises(ValueError) as empty_image_query:
         Images(query='').get_randomized()
     assert "It seems like you enter an empty query. Make sure you typed something." in str(empty_image_query.value)
+
+
+def test_phone_randomizer():
+    random_phone = PhoneNumbers().randomize()
+
+    # testing for correct phone structure: +562 633-8341, +2 295-5912, +159 720-930
+    assert re.match(r"^\+\d{1,3}\s\d{3,4}-\d{3,4}$", random_phone)
+    assert isinstance(random_phone, str)
+
+    for _ in range(10):
+        assert isinstance(random_phone, str)
+        assert re.match(r"^\+\d{1,3}\s\d{3,4}-\d{3,4}$", random_phone)

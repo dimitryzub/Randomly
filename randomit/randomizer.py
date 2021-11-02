@@ -2,6 +2,9 @@ import random, re
 from pathlib import Path
 from randomit.parsers.random_images import ImageScraper
 
+# TODO: add  sentence generator
+# TODO: add email generator
+
 RANDOM_WORDS_FILE = Path(__file__).parent / 'words_storage' / 'random_words.txt'
 NAMES_FILE = Path(__file__).parent.resolve() / 'words_storage' / 'names_list.txt'
 SURNAMES_FILE = Path(__file__).parent.resolve() / 'words_storage' / 'surnames_list.txt'
@@ -108,7 +111,8 @@ class Words:
                     "zip": zip_code
                 })
 
-            return [words_list[random.randrange(0, len(words_list))] for _ in range(1, 702)]  # 1-702 number of total addresses in .txt file
+            return [words_list[random.randrange(0, len(words_list))] for _ in
+                    range(1, 702)]  # 1-702 number of total addresses in .txt file
 
         if return_one_word and capitalize:
             for word in words:
@@ -170,6 +174,25 @@ class Words:
                 words_list.append(word)
 
             return words_list
+
+
+class PhoneNumbers:
+    '''
+    Generate 10 random phone numbers:
+
+    for _ in range(10):
+        print(PhoneNumbers().randomize())
+
+    +887 978-8625
+    +562 633-8341
+    +568 435-4740
+    +2 295-5912
+    +159 720-930
+    ...
+    '''
+
+    def randomize(self):
+        return f"+{random.randint(0, 999)} {random.randint(100, 9999)}-{random.randint(100, 9999)}"
 
 
 class Images:
