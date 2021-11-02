@@ -118,11 +118,11 @@ Images(query='cats', amount_to_return=3).get_randomized()
 ## 📡 Installation
 
 ```
-$ pip install randomit
+pip install randomit
 ```
 
 ```
-$ git clone https://github.com/dimitryzub/randomit.git
+git clone https://github.com/dimitryzub/randomit.git
 ```
 
 ## 👾 Suggestions
