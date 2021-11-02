@@ -2,8 +2,8 @@
 name = "randomit"
 homepage = "https://github.com/dimitryzub/randomit"
 documentation = "https://dimitryzub.github.io/randomit/docs/docs.html"
-version = "0.2.4"
-description = "Python library to generate random things."
+version = "0.2.5"
+description = "A Python package to generate random words based on a given theme, and load own files with words. Get random images based on a given query, and other stuff."
 authors = ["Dimitry Zub <dimitryzub@gmail.com>"]
 license = "MIT"
 readme = "README.md"
