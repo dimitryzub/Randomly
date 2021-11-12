@@ -1,9 +1,8 @@
-import random, re
+import random, re, string
 from pathlib import Path
 from randomit.parsers.random_images import ImageScraper
 
 # TODO: add  sentence generator
-# TODO: add email generator
 
 RANDOM_WORDS_FILE = Path(__file__).parent / 'words_storage' / 'random_words.txt'
 NAMES_FILE = Path(__file__).parent.resolve() / 'words_storage' / 'names_list.txt'
@@ -193,6 +192,30 @@ class PhoneNumbers:
 
     def randomize(self):
         return f"+{random.randint(0, 999)} {random.randint(100, 9999)}-{random.randint(100, 9999)}"
+
+
+class Emails:
+
+    '''
+    for _ in range(5):
+        print(Emails().randomize(email_chars=random.randint(6,15)))
+
+    vaqldoj@outlook.com
+    hstmbjskbd@gmail.com
+    wocptlruxnihlvo@zoho.com
+    foyonafdcyvgzj@hotmail.com
+    eqdmkmlzpiqkb@gmail.com
+    '''
+
+    def randomize(self, email_chars: int):
+        emails = ['@gmail.com',
+                  '@yahoo.com',
+                  '@zoho.com',
+                  '@outlook.com',
+                  '@protonmail.com',
+                  '@hotmail.com']
+
+        return f"{''.join(random.choices(string.ascii_lowercase, k=email_chars))}{random.choice(emails)}"
 
 
 class Images:
