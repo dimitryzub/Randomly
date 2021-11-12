@@ -19,6 +19,7 @@ Currently, `randomit` can:
 - [Load your files](https://github.com/dimitryzub/randomit#load-and-pass-your-files) that _contain **words**_ to randomize them. 
 - [Randomize images](https://github.com/dimitryzub/randomit#get-random-images) based on a given query.
 - Generate random [phone numbers](https://dimitryzub.github.io/randomit/docs/docs.html#get-phone-number).
+- Generate/randomize [email address](https://dimitryzub.github.io/randomit/docs/docs.html#get-email-address). 
 
 To see what's coming next, see [open projects](https://github.com/dimitryzub/randomit/projects).
 
