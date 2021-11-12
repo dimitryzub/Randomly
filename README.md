@@ -107,6 +107,8 @@ ___
 
 _Enter any query, and it will return a random image(s) URL based on the provided query, and it will be random on each execution._ 
 
+> Note: If you don't need this feature and want to get rid of dependencies, [use `poetry remove package_name`](https://python-poetry.org/docs/cli/#remove)
+
 ```python
 from randomit.randomizer import Images
 
