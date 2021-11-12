@@ -1,6 +1,9 @@
 import pytest, re
 from pathlib import Path
-from randomit.randomizer import Words, Images, PhoneNumbers
+from randomit.randomizer import (Words,
+                                 Images,
+                                 PhoneNumbers,
+                                 Emails)
 
 # test file while passing custom file to Words(file=FILE) object
 TEST_FILE = Path(__file__).parent.parent.resolve() / "randomit" / "words_storage" / "cities_list.txt"
@@ -214,3 +217,15 @@ def test_phone_randomizer():
     for _ in range(10):
         assert isinstance(random_phone, str)
         assert re.match(r"^\+\d{1,3}\s\d{3,4}-\d{3,4}$", random_phone)
+
+
+def test_email_randomizer():
+    random_email = Emails().randomize(email_chars=5)
+
+    assert isinstance(random_email, str)
+
+    # test for correct length of chars before @
+    assert len(random_email.split('@')[0]) == 5
+
+    # test for correct email domain
+    assert re.match(r'\w+.com', random_email.split('@')[1])
