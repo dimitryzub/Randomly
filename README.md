@@ -16,7 +16,7 @@ A Python library to generate random things.
 ___
 Currently, `randomit` can:
 - Generate [random word(s)](https://github.com/dimitryzub/randomit#get-random-words) based on a given [theme](https://github.com/dimitryzub/randomit#look-for-available-built-in-themes).
-- [Load your files](https://github.com/dimitryzub/randomit#load-and-pass-your-files) that _contain **words**_ to randomize them. 
+- [Load your files](https://github.com/dimitryzub/randomit#load-and-pass-file-with-words) that _contain **words**_ to randomize them. 
 - [Randomize images](https://github.com/dimitryzub/randomit#get-random-images) based on a given query.
 - Generate random [phone numbers](https://dimitryzub.github.io/randomit/docs/docs.html#get-phone-number).
 - Generate/randomize [email address](https://dimitryzub.github.io/randomit/docs/docs.html#get-email-address). 
@@ -91,7 +91,7 @@ Words().available_themes()
 Words(theme='cities').randomize()  # pass available arguments
 ```
 
-### Load and pass file(s) with words
+### Load and pass file with words
 _Make sure all words are **lowercase**, and start on a **new line** (`\n`), otherwise it won't work._
 
 ```python
@@ -107,7 +107,7 @@ ___
 
 _Enter any query, and it will return a random image(s) URL based on the provided query, and it will be random on each execution._ 
 
-> Note: If you don't need this feature and want to get rid of dependencies, [use `poetry remove package_name`](https://python-poetry.org/docs/cli/#remove)
+
 
 ```python
 from randomit.randomizer import Images
@@ -117,6 +117,18 @@ Images(query='cats', amount_to_return=3).get_randomized()
 
 # if "amount_to_return" argument is not specified -> defaults to batch of 100 images.
 ```
+
+> Note: If you don't need this feature and want to get rid of dependencies, [use `poetry remove package_name`](https://python-poetry.org/docs/cli/#remove)
+
+In this case:
+
+```lang-none
+poetry remove lxml
+poetry remove requests
+poetry remove bs4
+```
+
+___
 
 ## 📡 Installation
 
