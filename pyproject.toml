@@ -2,7 +2,7 @@
 name = "randomit"
 homepage = "https://github.com/dimitryzub/randomit"
 documentation = "https://dimitryzub.github.io/randomit/docs/docs.html"
-version = "0.2.5"
+version = "0.2.7"
 description = "A Python package to generate random things."
 authors = ["Dimitry Zub <dimitryzub@gmail.com>"]
 license = "MIT"
